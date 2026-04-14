@@ -15,8 +15,7 @@
     <%= form.submit "計算する" , class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"%>
 <% end %>
 <% if @result.present? %>
-    <%= :hours_per_years.inspect %>
-    <%=  %>
+
     <h2>結果: <%= @result %>円</h2>
 <% end %>
 </div>
