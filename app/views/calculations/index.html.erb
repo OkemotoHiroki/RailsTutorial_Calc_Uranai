@@ -1,0 +1,22 @@
+<div class="w-full justify-center mx-auto">
+<h1 class="text-2xl font-bold mb-4">
+    手取り計算機
+</h1>
+年収から所得税を引いた額を算出します。
+<%= form_with scope: :calculation, url: calculations_path, data:{turbo: false} do |form| %>
+    <div class="mb-4">
+        <%= form.label :hourly_wage, "時給" %>
+        <%= form.number_field :hourly_wage, class: "border border-gray-300 rounded py-2 px-3", required: true %>円／時
+    </div>
+    <div class="mb-4">
+        <%= form.label :hours_per_years, "年の労働時間" %>
+        <%= form.number_field :hours_per_years, class: "border border-gray-300 rounded py-2 px-3", required: true %>時間
+    </div>
+    <%= form.submit "計算する" , class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"%>
+<% end %>
+<% if @result.present? %>
+    <%= :hours_per_years.inspect %>
+    <%=  %>
+    <h2>結果: <%= @result %>円</h2>
+<% end %>
+</div>

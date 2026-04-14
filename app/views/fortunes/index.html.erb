@@ -1,0 +1,34 @@
+<div class="w-full justify-center mx-auto">
+<h1 class="text-2xl font-bold mb-4">運勢</h1>
+<%= form_with scope: :fortune, url: fortunes_path, data:{turbo: false} do |form| %>
+    <div class="mb-4">
+        <%= form.label :birthday, "誕生月：" %>
+        <%= form.select :birthday, (1..12).to_a, class: "", required: true %>月
+    </div>    
+    <%= form.submit "占う", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<% end %>
+<% if @rank.present? %>
+    <h2 class="text-xl font-bold mb-2"><%= @birthmonth %>月生まれのあなたの運勢は <%= @rank %> 位です！</h2>
+    <h2 class="text-xl font-bold mb-2">ラッキーカラーは <%= @lucky_color %> です！</h2>
+
+    <div>
+        <table class="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+                <tr>
+                    <th class="border border-gray-300 px-4 py-2">順位</th>
+                    <th class="border border-gray-300 px-4 py-2">誕生月</th>
+                    <th class="border border-gray-300 px-4 py-2">ラッキーカラー</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @ranking_list.each do |ranking| %>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2"><%= ranking[:rank] %>位</td>
+                        <td class="border border-gray-300 px-4 py-2"><%= ranking[:month] %>月</td>
+                        <td class="border border-gray-300 px-4 py-2"><%= ranking[:lucky_color] %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+<% end %> 
+
+</div>

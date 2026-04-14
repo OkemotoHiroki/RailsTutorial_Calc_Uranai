@@ -23,7 +23,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="">
+    <header class="bg-gray-800 text-white p-4 mb-6">
+      <div class="items-center">
+      <%= link_to "手取り計算機", calculations_path, class: "text-white hover:text-gray-300" %>
+      <%= link_to "運勢", fortunes_path, class: "text-white hover:text-gray-300 ml-4" %>
+      </div>
+    </header>
+    <main class="container mx-auto p-4 flex">
+      <%= yield %>
+    </main>
   </body>
 </html>
